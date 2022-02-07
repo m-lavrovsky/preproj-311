@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${descr}"></title>
+</head>
+<body>
+<h1 th:text="${descr}"></h1>
+
+<p th:text="${user.id} == -1 ? 'Задайте нового пользователя' : 'Будем править '+${user}" />
+
+<form th:action="@{/}" th:object="${user}" th:method="POST">
+    <input type="hidden" id="id" th:field="*{id}">
+
+    <label for="name">Имя</label>
+    <input type="text" id="name" th:field="*{name}"><BR>&nbsp;<BR>
+
+    <label for="lastname">Фамилия</label>
+    <input type="text" id="lastname" th:field="*{lastname}"><BR>&nbsp;<BR>
+
+    <label for="age">Возраст</label>
+    <input type="text" id="age" th:field="*{age}"><BR>&nbsp;<BR>
+
+    <input type="submit" value="Отправить данные">
+</form>
+<BR>
+<p><a href="/">Не хочу редактровать</a></p>
+</body>
+</html>
